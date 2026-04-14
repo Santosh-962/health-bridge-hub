@@ -36,6 +36,7 @@ body {
     radial-gradient(circle at top left, rgba(15, 95, 168, 0.12), transparent 34%),
     radial-gradient(circle at right center, rgba(217, 45, 58, 0.1), transparent 28%),
     linear-gradient(180deg, #f7fbff 0%, #eff6ff 42%, #f8fbff 100%);
+  padding-bottom: 5.9rem;
 }
 
 img {
@@ -202,6 +203,13 @@ textarea {
   margin: 1.6rem 0;
 }
 
+.hero-inline-link {
+  display: inline-flex;
+  margin-bottom: 1.1rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -230,6 +238,11 @@ textarea {
   background: rgba(15, 95, 168, 0.1);
   color: var(--primary-dark);
   border-color: rgba(15, 95, 168, 0.18);
+}
+
+.btn-emergency {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  box-shadow: 0 14px 30px rgba(15, 95, 168, 0.2);
 }
 
 .hero-points {
@@ -352,6 +365,74 @@ textarea {
   background: rgba(255, 255, 255, 0.78);
 }
 
+.quick-finder {
+  margin-top: 1.4rem;
+  padding: 1.15rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(226, 240, 255, 0.9));
+  border: 1px solid rgba(22, 50, 79, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.quick-finder-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.quick-finder-head h2 {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  line-height: 1.1;
+}
+
+.quick-finder-head p:last-child {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.quick-finder-grid .btn {
+  width: 100%;
+}
+
+.quick-stats-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.quick-stat-card,
+.operations-card {
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(22, 50, 79, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.quick-stat-card span,
+.operations-card span {
+  display: block;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.quick-stat-card strong,
+.operations-card strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 1.95rem;
+  color: var(--primary-dark);
+}
+
+.quick-stat-card small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
 .trust-strip {
   padding: 0.5rem 0 2.5rem;
 }
@@ -420,6 +501,13 @@ textarea {
   color: var(--primary-dark);
 }
 
+.section-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
 .urgent-chip {
   background: rgba(217, 45, 58, 0.12);
   color: var(--accent-dark);
@@ -481,13 +569,15 @@ textarea:focus {
 .card-list,
 .hospital-grid,
 .highway-cards,
-.form-grid {
+.form-grid,
+.quick-stats-grid {
   display: grid;
   gap: 1rem;
 }
 
 .two-col,
-.three-col {
+.three-col,
+.four-col {
   grid-template-columns: 1fr;
 }
 
@@ -566,6 +656,26 @@ textarea:focus {
 .tag {
   background: rgba(15, 95, 168, 0.1);
   color: var(--primary-dark);
+}
+
+.verified-badge {
+  background: rgba(15, 141, 98, 0.12);
+  color: var(--success);
+}
+
+.badge.status-good,
+.tag.status-good {
+  background: rgba(15, 141, 98, 0.12);
+}
+
+.badge.status-watch,
+.tag.status-watch {
+  background: rgba(217, 119, 6, 0.14);
+}
+
+.badge.status-critical,
+.tag.status-critical {
+  background: rgba(217, 45, 58, 0.12);
 }
 
 .hospital-card {
@@ -674,6 +784,44 @@ textarea:focus {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.84));
 }
 
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.95rem;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 50, 79, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.action-link:hover,
+.action-link:focus-visible {
+  border-color: rgba(15, 95, 168, 0.32);
+  box-shadow: 0 10px 25px rgba(15, 95, 168, 0.12);
+}
+
+.action-link.action-call {
+  background: rgba(217, 45, 58, 0.08);
+  color: var(--accent-dark);
+}
+
+.update-meta {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .form-grid {
   margin-bottom: 1rem;
 }
@@ -685,6 +833,37 @@ textarea:focus {
 .contact-card {
   display: grid;
   gap: 1rem;
+}
+
+.operations-grid {
+  margin-bottom: 1rem;
+}
+
+.operations-card p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.operations-feed-panel {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.activity-card {
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(22, 50, 79, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.88));
+}
+
+.activity-card h4 {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: var(--primary-dark);
+}
+
+.activity-card p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
 }
 
 .full-width {
@@ -700,6 +879,10 @@ textarea:focus {
 
 .site-footer {
   padding: 1.5rem 0 2.5rem;
+}
+
+.footer-note {
+  max-width: 58ch;
 }
 
 .footer-wrap {
@@ -725,13 +908,48 @@ textarea:focus {
   border: 1px dashed rgba(15, 95, 168, 0.2);
 }
 
+.sticky-emergency-bar {
+  position: fixed;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  padding: 0.55rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(22, 50, 79, 0.12);
+  box-shadow: 0 18px 34px rgba(15, 72, 126, 0.18);
+}
+
+.sticky-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.65rem 0.7rem;
+  border-radius: 16px;
+  background: rgba(15, 95, 168, 0.08);
+  color: var(--primary-dark);
+  font-weight: 700;
+  text-align: center;
+}
+
+.sticky-primary {
+  background: linear-gradient(135deg, var(--accent), #f14f5a);
+  color: #fff;
+}
+
 @media (min-width: 700px) {
   .capacity-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .trust-grid,
-  .form-grid {
+  .form-grid,
+  .quick-stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -744,6 +962,10 @@ textarea:focus {
   }
 
   .three-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .four-col {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -780,6 +1002,11 @@ textarea:focus {
     gap: 2rem;
   }
 
+  .quick-finder {
+    margin-top: 1.8rem;
+    padding: 1.3rem;
+  }
+
   .trust-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -790,17 +1017,30 @@ textarea:focus {
   }
 
   .emergency-filter {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr) auto;
   }
 
   .three-col,
   .hospital-grid,
   .highway-cards,
-  .form-grid {
+  .form-grid,
+  .quick-stats-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .four-col {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .section {
     padding: 3rem 0;
+  }
+
+  .sticky-emergency-bar {
+    display: none;
+  }
+
+  body {
+    padding-bottom: 0;
   }
 }

@@ -36,6 +36,7 @@
         <a href="#medicine">Medicine</a>
         <a href="#diagnostics">Diagnostics</a>
         <a href="#emergency">Emergency</a>
+        <a href="#operations">Operations</a>
         <a href="#register">Register</a>
       </nav>
     </div>
@@ -53,13 +54,15 @@
             mobile-first healthcare website.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#emergency">Find Emergency Help</a>
-            <a class="btn btn-secondary" href="#register">Register as Partner</a>
+            <a class="btn btn-primary" href="#hospitals">Find Hospital</a>
+            <a class="btn btn-secondary" href="#directory">Find Blood</a>
+            <a class="btn btn-primary btn-emergency" href="#emergency">Emergency Help</a>
           </div>
+          <a class="hero-inline-link" href="#register">Register as donor, hospital, pharmacy, or partner</a>
           <ul class="hero-points">
             <li>Search India-wide by city, state, union territory, locality, and service type</li>
             <li>Emergency hospitals near major highway corridors</li>
-            <li>Live bed visibility and partner intake forms</li>
+            <li>Verified partner badges, update timestamps, and quick action cards for faster decisions</li>
           </ul>
         </div>
 
@@ -93,6 +96,61 @@
           </div>
         </aside>
       </div>
+
+      <div class="container">
+        <section class="quick-finder" aria-labelledby="quick-finder-title">
+          <div class="quick-finder-head">
+            <div>
+              <p class="eyebrow">Fast discovery</p>
+              <h2 id="quick-finder-title">Use one location selector across the whole website</h2>
+              <p>Pick a state, city, and locality once to jump straight into nearby hospitals, blood banks, diagnostics, and emergency support.</p>
+            </div>
+            <div class="section-chip-row">
+              <span class="section-chip">Mobile-first quick finder</span>
+              <span id="global-sync" class="live-pill">Synced just now</span>
+            </div>
+          </div>
+
+          <div class="filter-card quick-finder-grid">
+            <label>
+              State / UT
+              <select id="quick-state"></select>
+            </label>
+            <label>
+              City
+              <select id="quick-city"></select>
+            </label>
+            <label>
+              Locality
+              <input id="quick-locality" type="search" placeholder="Optional locality">
+            </label>
+            <button id="quick-apply" class="btn btn-primary" type="button">Use Across Site</button>
+          </div>
+
+          <div class="quick-stats-grid">
+            <article class="quick-stat-card">
+              <span>Hospitals</span>
+              <strong id="quick-hospital-count">0</strong>
+              <small>Near your current selection</small>
+            </article>
+            <article class="quick-stat-card">
+              <span>Blood Banks</span>
+              <strong id="quick-bloodbank-count">0</strong>
+              <small>Ready to contact</small>
+            </article>
+            <article class="quick-stat-card">
+              <span>Labs</span>
+              <strong id="quick-lab-count">0</strong>
+              <small>Diagnostic providers nearby</small>
+            </article>
+            <article class="quick-stat-card">
+              <span>Pharmacies</span>
+              <strong id="quick-pharmacy-count">0</strong>
+              <small>Emergency medicine support</small>
+            </article>
+          </div>
+        </section>
+      </div>
     </section>
 
     <section class="trust-strip">
@@ -120,7 +178,10 @@
             <h2>Donors list and blood bank directory</h2>
             <p>Search verified donors and blood banks by city, state, and blood group.</p>
           </div>
-          <div class="section-chip">Fast-match blood access</div>
+          <div class="section-chip-row">
+            <div class="section-chip">Fast-match blood access</div>
+            <span id="blood-sync" class="live-pill">Updated just now</span>
+          </div>
         </div>
 
         <div class="filter-card">
@@ -170,7 +231,10 @@
             <h2>Nationwide hospital locations with emergency routing</h2>
             <p>Monitor hospital capacity, identify emergency-ready centers near highways, and view live-style bed allocation.</p>
           </div>
-          <div class="section-chip">Trauma-ready coverage</div>
+          <div class="section-chip-row">
+            <div class="section-chip">Trauma-ready coverage</div>
+            <span id="hospital-sync-head" class="live-pill">Updated just now</span>
+          </div>
         </div>
 
         <div class="filter-card">
@@ -218,7 +282,10 @@
             <h2>Pharma-linked stock and supply intelligence</h2>
             <p>Track medicine availability from major pharmaceutical supply partners by product, region, and status.</p>
           </div>
-          <div class="section-chip">Supply visibility</div>
+          <div class="section-chip-row">
+            <div class="section-chip">Supply visibility</div>
+            <span id="medicine-sync" class="live-pill">Updated just now</span>
+          </div>
         </div>
 
         <div class="filter-card">
@@ -253,7 +320,10 @@
             <h2>Top X-ray centers and diagnostic labs across the country</h2>
             <p>Search high-performing diagnostic providers by locality, state, and test capability.</p>
           </div>
-          <div class="section-chip">Locality-based search</div>
+          <div class="section-chip-row">
+            <div class="section-chip">Locality-based search</div>
+            <span id="diagnostic-sync" class="live-pill">Updated just now</span>
+          </div>
         </div>
 
         <div class="filter-card">
@@ -294,6 +364,10 @@
 
         <div class="filter-card emergency-filter">
           <label>
+            State / UT
+            <select id="emergency-state"></select>
+          </label>
+          <label>
             City
             <select id="emergency-city"></select>
           </label>
@@ -327,13 +401,60 @@
       </div>
     </section>
 
+    <section id="operations" class="section alt-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Operations overview</p>
+            <h2>Admin-style intake and partner visibility</h2>
+            <p>Track pending verifications, partner requests, emergency-ready coverage, and email routing in one place.</p>
+          </div>
+          <div class="section-chip-row">
+            <div class="section-chip">Ops-ready dashboard</div>
+            <span id="ops-sync" class="live-pill">Updated just now</span>
+          </div>
+        </div>
+
+        <div class="results-grid four-col operations-grid">
+          <article class="operations-card">
+            <span>Pending verification</span>
+            <strong id="admin-pending-count">0</strong>
+            <p>New donors, hospitals, and pharmacies awaiting partner review.</p>
+          </article>
+          <article class="operations-card">
+            <span>Partner requests</span>
+            <strong id="admin-request-count">0</strong>
+            <p>Organizations that want to join the Health Bridge Hub network.</p>
+          </article>
+          <article class="operations-card">
+            <span>Emergency-ready network</span>
+            <strong id="admin-emergency-count">0</strong>
+            <p>Hospitals and pharmacies optimized for urgent routing and highway access.</p>
+          </article>
+          <article class="operations-card">
+            <span>Email routing</span>
+            <strong id="admin-email-mode">Queue</strong>
+            <p id="admin-email-recipient">healthbridgehub0@gmail.com</p>
+          </article>
+        </div>
+
+        <div class="results-panel operations-feed-panel">
+          <div class="results-head">
+            <h3>Recent onboarding activity</h3>
+            <span id="admin-feed-count" class="pill-count">0 updates</span>
+          </div>
+          <div id="admin-feed" class="card-list"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="register" class="section">
       <div class="container">
         <div class="section-head">
           <div>
             <p class="eyebrow">Registration and contact</p>
             <h2>Join the Health Bridge Hub network</h2>
-            <p>Register donors, hospitals, and pharmacies, or send partnership requests and service updates through the live site.</p>
+            <p>Register donors, hospitals, and pharmacies, or send partnership requests and service updates. Every submission enters the partner review workflow and can sync to the backend when it is available.</p>
           </div>
           <div class="section-chip">Partner onboarding</div>
         </div>
@@ -390,6 +511,10 @@
               <input name="state" type="text" required placeholder="State">
             </label>
             <label>
+              Locality
+              <input name="locality" type="text" placeholder="Locality">
+            </label>
+            <label>
               Highway corridor
               <input name="highway" type="text" placeholder="Example: NH 44">
             </label>
@@ -432,7 +557,7 @@
           <div>
             <p class="eyebrow">Partner requests</p>
             <h3>Partner With Health Bridge Hub</h3>
-            <p>Share partnership details, onboarding requests, or urgent support issues. Our team can use this intake to coordinate the next step.</p>
+            <p>Share partnership details, onboarding requests, or urgent support issues. Every request is added to the review queue and prepared for email notification to healthbridgehub0@gmail.com.</p>
           </div>
           <label>
             Request type
@@ -477,14 +602,22 @@
       <div>
         <strong>Health Bridge Hub</strong>
         <p>Healthcare coordination designed for fast decisions, trusted directories, and emergency support.</p>
+        <p class="footer-note">Medical information should be verified directly with the listed provider before treatment or dispatch decisions are made.</p>
       </div>
       <div class="footer-links">
         <a href="#home">Home</a>
         <a href="#emergency">Emergency</a>
+        <a href="#operations">Operations</a>
         <a href="#register">Registration</a>
       </div>
     </div>
   </footer>
+
+  <div class="sticky-emergency-bar" aria-label="Emergency quick actions">
+    <a id="sticky-nearest" class="sticky-action sticky-primary" href="#emergency">Nearest Open Hospital</a>
+    <a id="sticky-call" class="sticky-action" href="#emergency">Call</a>
+    <a id="sticky-directions" class="sticky-action" href="#emergency" target="_blank" rel="noreferrer">Directions</a>
+  </div>
 
   <script src="script.js"></script>
 </body>
