@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Bridge Hub | Nationwide Healthcare Access</title>
+  <meta
+    name="description"
+    content="Health Bridge Hub connects donors, hospitals, blood banks, pharma supply hubs, diagnostics, and emergency services across India."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a class="brand" href="#home" aria-label="Health Bridge Hub home">
+        <span class="brand-mark">HB</span>
+        <span>
+          <strong>Health Bridge Hub</strong>
+          <small>Care networks that move fast</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="#directory">Blood & Donors</a>
+        <a href="#hospitals">Hospitals</a>
+        <a href="#medicine">Medicine</a>
+        <a href="#diagnostics">Diagnostics</a>
+        <a href="#emergency">Emergency</a>
+        <a href="#register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Nationwide healthcare coordination</p>
+          <h1>One trusted place to find blood, beds, medicine, diagnostics, and emergency care.</h1>
+          <p class="hero-text">
+            Health Bridge Hub brings together donor networks, blood banks, hospitals, pharma supply nodes,
+            and diagnostic providers across all 28 states and 8 union territories into a clean, fast,
+            mobile-first healthcare website.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#emergency">Find Emergency Help</a>
+            <a class="btn btn-secondary" href="#register">Register as Partner</a>
+          </div>
+          <ul class="hero-points">
+            <li>Search India-wide by city, state, union territory, locality, and service type</li>
+            <li>Emergency hospitals near major highway corridors</li>
+            <li>Live bed visibility and partner intake forms</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="hero-status">
+            <span class="status-dot"></span>
+            National emergency network active
+          </div>
+          <div class="hero-panel-grid">
+            <article class="metric-card">
+              <strong id="metric-donors">0</strong>
+              <span>Verified Donors</span>
+            </article>
+            <article class="metric-card">
+              <strong id="metric-hospitals">0</strong>
+              <span>Hospital Partners</span>
+            </article>
+            <article class="metric-card">
+              <strong id="metric-bloodbanks">0</strong>
+              <span>Blood Banks</span>
+            </article>
+            <article class="metric-card">
+              <strong id="metric-labs">0</strong>
+              <span>Diagnostic Centers</span>
+            </article>
+          </div>
+          <div class="alert-card">
+            <h2>Emergency Snapshot</h2>
+            <p>High-priority routes are monitored for trauma centers, blood inventory, and open pharmacies.</p>
+            <div id="emergency-summary" class="alert-list"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <article>
+          <strong>24x7 Access</strong>
+          <span>Fast emergency support cards for hospitals, blood banks, and pharmacies.</span>
+        </article>
+        <article>
+          <strong>Searchable Directories</strong>
+          <span>Filter the care network by city, state, and locality in seconds.</span>
+        </article>
+        <article>
+          <strong>Partner Onboarding</strong>
+          <span>Dedicated registration forms for donors, hospitals, and pharmacies.</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="directory" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Blood support directory</p>
+            <h2>Donors list and blood bank directory</h2>
+            <p>Search verified donors and blood banks by city, state, and blood group.</p>
+          </div>
+          <div class="section-chip">Fast-match blood access</div>
+        </div>
+
+        <div class="filter-card">
+          <label>
+            Search name or city
+            <input id="directory-search" type="search" placeholder="Search donors or blood banks">
+          </label>
+          <label>
+            State
+            <select id="directory-state"></select>
+          </label>
+          <label>
+            City
+            <select id="directory-city"></select>
+          </label>
+          <label>
+            Blood group
+            <select id="directory-blood"></select>
+          </label>
+        </div>
+
+        <div class="results-grid two-col">
+          <div class="results-panel">
+            <div class="results-head">
+              <h3>Available donors</h3>
+              <span id="donor-count" class="pill-count">0 results</span>
+            </div>
+            <div id="donor-list" class="card-list"></div>
+          </div>
+
+          <div class="results-panel">
+            <div class="results-head">
+              <h3>Blood bank directory</h3>
+              <span id="bloodbank-count" class="pill-count">0 results</span>
+            </div>
+            <div id="bloodbank-list" class="card-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hospitals" class="section alt-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Hospital availability</p>
+            <h2>Nationwide hospital locations with emergency routing</h2>
+            <p>Monitor hospital capacity, identify emergency-ready centers near highways, and view live-style bed allocation.</p>
+          </div>
+          <div class="section-chip">Trauma-ready coverage</div>
+        </div>
+
+        <div class="filter-card">
+          <label>
+            Search hospital or city
+            <input id="hospital-search" type="search" placeholder="Search hospital name or city">
+          </label>
+          <label>
+            State
+            <select id="hospital-state"></select>
+          </label>
+          <label>
+            Service type
+            <select id="hospital-service">
+              <option value="all">All services</option>
+              <option value="Trauma">Trauma</option>
+              <option value="Cardiac">Cardiac</option>
+              <option value="ICU">ICU</option>
+              <option value="Burns">Burns</option>
+            </select>
+          </label>
+          <label class="checkbox-label">
+            <input id="highway-only" type="checkbox">
+            Emergency hospitals near highways only
+          </label>
+        </div>
+
+        <div class="highway-strip">
+          <div class="strip-head">
+            <h3>Emergency hospitals near highways</h3>
+            <span class="live-pill" id="hospital-sync">Live feed updated just now</span>
+          </div>
+          <div id="highway-hospitals" class="highway-cards"></div>
+        </div>
+
+        <div id="hospital-grid" class="hospital-grid"></div>
+      </div>
+    </section>
+
+    <section id="medicine" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Medicine availability</p>
+            <h2>Pharma-linked stock and supply intelligence</h2>
+            <p>Track medicine availability from major pharmaceutical supply partners by product, region, and status.</p>
+          </div>
+          <div class="section-chip">Supply visibility</div>
+        </div>
+
+        <div class="filter-card">
+          <label>
+            Search medicine or company
+            <input id="medicine-search" type="search" placeholder="Search by medicine or pharma company">
+          </label>
+          <label>
+            State
+            <select id="medicine-state"></select>
+          </label>
+          <label>
+            Supply status
+            <select id="medicine-status">
+              <option value="all">All statuses</option>
+              <option value="In Stock">In Stock</option>
+              <option value="Restocking">Restocking</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="medicine-grid" class="results-grid three-col"></div>
+      </div>
+    </section>
+
+    <section id="diagnostics" class="section alt-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Diagnostic services</p>
+            <h2>Top X-ray centers and diagnostic labs across the country</h2>
+            <p>Search high-performing diagnostic providers by locality, state, and test capability.</p>
+          </div>
+          <div class="section-chip">Locality-based search</div>
+        </div>
+
+        <div class="filter-card">
+          <label>
+            Search locality or center
+            <input id="diagnostic-search" type="search" placeholder="Search locality or center name">
+          </label>
+          <label>
+            State
+            <select id="diagnostic-state"></select>
+          </label>
+          <label>
+            Diagnostic type
+            <select id="diagnostic-service">
+              <option value="all">All diagnostics</option>
+              <option value="X-Ray">X-Ray</option>
+              <option value="MRI">MRI</option>
+              <option value="CT">CT</option>
+              <option value="Pathology">Pathology</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="diagnostic-grid" class="results-grid three-col"></div>
+      </div>
+    </section>
+
+    <section id="emergency" class="section emergency-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Emergency access</p>
+            <h2>Quick access to nearest hospitals, blood banks, and pharmacies</h2>
+            <p>Choose a city to instantly surface emergency support resources with direct contact details.</p>
+          </div>
+          <div class="section-chip urgent-chip">Critical response</div>
+        </div>
+
+        <div class="filter-card emergency-filter">
+          <label>
+            City
+            <select id="emergency-city"></select>
+          </label>
+          <label>
+            Locality
+            <input id="emergency-locality" type="search" placeholder="Optional locality">
+          </label>
+          <button id="emergency-button" class="btn btn-primary" type="button">Find Emergency Support</button>
+        </div>
+
+        <div class="results-grid three-col emergency-grid">
+          <div class="results-panel emergency-panel">
+            <div class="results-head">
+              <h3>Nearest hospitals</h3>
+            </div>
+            <div id="emergency-hospitals" class="card-list"></div>
+          </div>
+          <div class="results-panel emergency-panel">
+            <div class="results-head">
+              <h3>Nearest blood banks</h3>
+            </div>
+            <div id="emergency-bloodbanks" class="card-list"></div>
+          </div>
+          <div class="results-panel emergency-panel">
+            <div class="results-head">
+              <h3>Nearest pharmacies</h3>
+            </div>
+            <div id="emergency-pharmacies" class="card-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Registration and contact</p>
+            <h2>Join the Health Bridge Hub network</h2>
+            <p>Register donors, hospitals, and pharmacies, or send partnership requests and service updates through the live site.</p>
+          </div>
+          <div class="section-chip">Partner onboarding</div>
+        </div>
+
+        <div class="form-grid">
+          <form id="donor-form" class="form-card">
+            <h3>Donor registration</h3>
+            <label>
+              Full name
+              <input name="name" type="text" required placeholder="Enter donor name">
+            </label>
+            <label>
+              Blood group
+              <select name="blood" required>
+                <option value="">Select blood group</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+              </select>
+            </label>
+            <label>
+              City
+              <input name="city" type="text" required placeholder="City">
+            </label>
+            <label>
+              State
+              <input name="state" type="text" required placeholder="State">
+            </label>
+            <label>
+              Phone
+              <input name="phone" type="tel" required placeholder="+91">
+            </label>
+            <button class="btn btn-primary" type="submit">Register Donor</button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+
+          <form id="hospital-form" class="form-card">
+            <h3>Hospital registration</h3>
+            <label>
+              Hospital name
+              <input name="name" type="text" required placeholder="Hospital name">
+            </label>
+            <label>
+              City
+              <input name="city" type="text" required placeholder="City">
+            </label>
+            <label>
+              State
+              <input name="state" type="text" required placeholder="State">
+            </label>
+            <label>
+              Highway corridor
+              <input name="highway" type="text" placeholder="Example: NH 44">
+            </label>
+            <label>
+              Emergency contact
+              <input name="phone" type="tel" required placeholder="+91">
+            </label>
+            <button class="btn btn-primary" type="submit">Register Hospital</button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+
+          <form id="pharmacy-form" class="form-card">
+            <h3>Pharmacy registration</h3>
+            <label>
+              Pharmacy name
+              <input name="name" type="text" required placeholder="Pharmacy name">
+            </label>
+            <label>
+              Locality
+              <input name="locality" type="text" required placeholder="Locality">
+            </label>
+            <label>
+              City
+              <input name="city" type="text" required placeholder="City">
+            </label>
+            <label>
+              State
+              <input name="state" type="text" required placeholder="State">
+            </label>
+            <label>
+              Contact number
+              <input name="phone" type="tel" required placeholder="+91">
+            </label>
+            <button class="btn btn-primary" type="submit">Register Pharmacy</button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <form id="contact-form" class="contact-card">
+          <div>
+            <p class="eyebrow">Partner requests</p>
+            <h3>Partner With Health Bridge Hub</h3>
+            <p>Share partnership details, onboarding requests, or urgent support issues. Our team can use this intake to coordinate the next step.</p>
+          </div>
+          <label>
+            Request type
+            <select name="requestType" required>
+              <option value="">Select request type</option>
+              <option value="Hospital Partnership">Hospital Partnership</option>
+              <option value="Pharmacy Partnership">Pharmacy Partnership</option>
+              <option value="Diagnostic Partnership">Diagnostic Partnership</option>
+              <option value="Blood Bank Partnership">Blood Bank Partnership</option>
+              <option value="General Support">General Support</option>
+            </select>
+          </label>
+          <label>
+            Your name
+            <input name="name" type="text" required placeholder="Full name">
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" required placeholder="Email address">
+          </label>
+          <label>
+            Organization
+            <input name="organization" type="text" placeholder="Hospital, blood bank, lab, or company">
+          </label>
+          <label>
+            Phone
+            <input name="phone" type="tel" placeholder="+91">
+          </label>
+          <label class="full-width">
+            Message
+            <textarea name="message" rows="5" required placeholder="Tell us how we can help"></textarea>
+          </label>
+          <button class="btn btn-secondary" type="submit">Send Message</button>
+          <p class="form-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div>
+        <strong>Health Bridge Hub</strong>
+        <p>Healthcare coordination designed for fast decisions, trusted directories, and emergency support.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#emergency">Emergency</a>
+        <a href="#register">Registration</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
