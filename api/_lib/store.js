@@ -1,5 +1,3 @@
-import { get, put } from "@vercel/blob";
-
 const DATA_MODE = "vercel-blob";
 const EMAIL_RECIPIENT = "healthbridgehub0@gmail.com";
 const EMAIL_SENDER = process.env.MAIL_FROM || "onboarding@resend.dev";
@@ -18,6 +16,10 @@ const STORE_NAMES = [
 
 function nowIso() {
   return new Date().toISOString();
+}
+
+async function loadBlobSdk() {
+  return import("@vercel/blob");
 }
 
 function slugify(value) {
@@ -69,6 +71,7 @@ async function fetchBlobJson(pathname) {
   let blob;
 
   try {
+    const { get } = await loadBlobSdk();
     blob = await get(pathname, { access: "private" });
   } catch (blobError) {
     const message = String(blobError?.message || "");
@@ -112,6 +115,8 @@ async function readCollection(storeName) {
 }
 
 async function writeCollection(storeName, records) {
+  const { put } = await loadBlobSdk();
+
   await put(collectionPath(storeName), JSON.stringify(records, null, 2), {
     access: "private",
     contentType: "application/json; charset=utf-8",
