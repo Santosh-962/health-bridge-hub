@@ -117,6 +117,10 @@
               <select id="quick-state"></select>
             </label>
             <label>
+              District
+              <select id="quick-district"></select>
+            </label>
+            <label>
               City
               <select id="quick-city"></select>
             </label>
@@ -194,6 +198,10 @@
             <select id="directory-state"></select>
           </label>
           <label>
+            District
+            <select id="directory-district"></select>
+          </label>
+          <label>
             City
             <select id="directory-city"></select>
           </label>
@@ -247,6 +255,10 @@
             <select id="hospital-state"></select>
           </label>
           <label>
+            District
+            <select id="hospital-district"></select>
+          </label>
+          <label>
             Service type
             <select id="hospital-service">
               <option value="all">All services</option>
@@ -298,6 +310,10 @@
             <select id="medicine-state"></select>
           </label>
           <label>
+            District
+            <select id="medicine-district"></select>
+          </label>
+          <label>
             Supply status
             <select id="medicine-status">
               <option value="all">All statuses</option>
@@ -336,6 +352,10 @@
             <select id="diagnostic-state"></select>
           </label>
           <label>
+            District
+            <select id="diagnostic-district"></select>
+          </label>
+          <label>
             Diagnostic type
             <select id="diagnostic-service">
               <option value="all">All diagnostics</option>
@@ -366,6 +386,10 @@
           <label>
             State / UT
             <select id="emergency-state"></select>
+          </label>
+          <label>
+            District
+            <select id="emergency-district"></select>
           </label>
           <label>
             City
@@ -481,12 +505,16 @@
               </select>
             </label>
             <label>
-              City
-              <input name="city" type="text" required placeholder="City">
+              State / UT
+              <select id="donor-state" name="state" required></select>
             </label>
             <label>
-              State
-              <input name="state" type="text" required placeholder="State">
+              District
+              <select id="donor-district" name="district" required></select>
+            </label>
+            <label>
+              City / Town
+              <input name="city" type="text" required placeholder="City or town">
             </label>
             <label>
               Phone
@@ -503,12 +531,16 @@
               <input name="name" type="text" required placeholder="Hospital name">
             </label>
             <label>
-              City
-              <input name="city" type="text" required placeholder="City">
+              State / UT
+              <select id="hospital-form-state" name="state" required></select>
             </label>
             <label>
-              State
-              <input name="state" type="text" required placeholder="State">
+              District
+              <select id="hospital-form-district" name="district" required></select>
+            </label>
+            <label>
+              City / Town
+              <input name="city" type="text" required placeholder="City or town">
             </label>
             <label>
               Locality
@@ -537,12 +569,16 @@
               <input name="locality" type="text" required placeholder="Locality">
             </label>
             <label>
-              City
-              <input name="city" type="text" required placeholder="City">
+              State / UT
+              <select id="pharmacy-form-state" name="state" required></select>
             </label>
             <label>
-              State
-              <input name="state" type="text" required placeholder="State">
+              District
+              <select id="pharmacy-form-district" name="district" required></select>
+            </label>
+            <label>
+              City / Town
+              <input name="city" type="text" required placeholder="City or town">
             </label>
             <label>
               Contact number
@@ -581,6 +617,14 @@
           <label>
             Organization
             <input name="organization" type="text" placeholder="Hospital, blood bank, lab, or company">
+          </label>
+          <label>
+            State / UT
+            <select id="contact-state" name="state"></select>
+          </label>
+          <label>
+            District
+            <select id="contact-district" name="district"></select>
           </label>
           <label>
             Phone
