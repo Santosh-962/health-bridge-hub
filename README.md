@@ -1,76 +1,62 @@
 # health-bridge-hub
 # Health Bridge Hub
 
-Health Bridge Hub is a healthcare directory and registration platform covering all India states and union territories. It now runs with a PowerShell backend API that:
+Health Bridge Hub is a healthcare directory and registration platform covering all India states and union territories. The frontend already calls `/api/*` endpoints, and this repo now includes Vercel Functions for:
 
-- serves the website locally
-- stores donor, hospital, pharmacy, medicine, diagnostic, and partner-request records in backend JSON files
-- queues or sends email notifications for new registrations and partner requests
+- health and bootstrap checks
+- seed import for the India-wide directories
+- donor, hospital, pharmacy, and partner-request registrations
+- persistent backend storage with Vercel Blob
+- queued or direct email notification handling for new registrations
 
-## Local run
+## Backend on Vercel
 
-Run the backend server:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\server.ps1 -Port 8080
-```
-
-Open:
+To make the deployed website store registrations in the backend, connect a **private Vercel Blob store** to the project so Vercel provides:
 
 ```text
-http://localhost:8080/
+BLOB_READ_WRITE_TOKEN
 ```
 
-## Backend storage
+Without that token, the frontend will fall back to browser-session mode.
 
-Persistent backend data is stored in:
+The backend stores these collections:
 
 ```text
-backend-data\
+donors
+bloodBanks
+hospitals
+medicineInventory
+diagnostics
+pharmacies
+contacts
+mailQueue
 ```
 
-Files are created automatically for:
+Each collection is saved as JSON in private Vercel Blob storage.
 
-- donors
-- blood banks
-- hospitals
-- medicine inventory
-- diagnostics
-- pharmacies
-- contacts and partner requests
-- queued email notifications
+## Optional email sending
 
-## Gmail email setup
+By default, new requests are stored and also added to the backend mail queue. To send email notifications automatically to `healthbridgehub0@gmail.com`, add:
 
-By default, new requests are saved to the backend and queued for email delivery. To send directly to `healthbridgehub0@gmail.com`, set these environment variables before starting the server:
-
-```powershell
-$env:HHB_GMAIL_USER="healthbridgehub0@gmail.com"
-$env:HHB_GMAIL_APP_PASSWORD="YOUR_GMAIL_APP_PASSWORD"
-powershell -NoProfile -ExecutionPolicy Bypass -File .\server.ps1 -Port 8080
+```text
+RESEND_API_KEY=your_resend_api_key
+MAIL_FROM=onboarding@resend.dev
 ```
 
 Notes:
 
-- use a Gmail App Password, not your normal Gmail password
 - recipient mail is fixed to `healthbridgehub0@gmail.com`
-- if SMTP is not configured or sending fails, notifications are stored in `backend-data\mail-queue.json`
+- if `RESEND_API_KEY` is missing or sending fails, notifications stay queued in `mailQueue`
+- you can replace `MAIL_FROM` with your verified sending domain later
 
-## GitHub publish target
+## Deploy notes
 
-This environment does not currently have `git` installed, so the project cannot be pushed from here yet. When `git` is available, use a repository such as:
+The project uses:
 
 ```text
-https://github.com/Santosh-962/health-bridge-hub.git
+index.html / styles.css / script.js for the frontend
+api/*.js for the Vercel backend
+vercel.json for function runtime settings
 ```
 
-Suggested commands after installing `git`:
-
-```powershell
-git init
-git branch -M main
-git remote add origin https://github.com/Santosh-962/health-bridge-hub.git
-git add .
-git commit -m "Build Health Bridge Hub"
-git push -u origin main
-```
+After the Blob token is available in Vercel, the live site should be able to seed data and persist new registrations through `/api`.

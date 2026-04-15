@@ -1,0 +1,12 @@
+{
+  "name": "health-bridge-hub",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "dependencies": {
+    "@vercel/blob": "^1.1.1"
+  }
+}
